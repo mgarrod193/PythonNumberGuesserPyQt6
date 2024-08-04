@@ -1,11 +1,11 @@
 from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout, QHBoxLayout
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout, QHBoxLayout
 
 from instr import *
 from Game_window import *
 
 
-class MainWindow(QMainWindow):
+class MainWindow(QWidget):
     def __init__(self) -> None:
         super().__init__()
         

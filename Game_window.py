@@ -1,13 +1,13 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QDoubleValidator, QIntValidator, QFont # checking the types of input values
-from PyQt6.QtWidgets import (QVBoxLayout, QPushButton, QLabel, QLineEdit)
+from PyQt6.QtWidgets import (QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QWidget)
 
 from random import randint
 from instr import *
 
 lives = 3
 
-class GameWindow():
+class GameWindow(QWidget):
     def __init__(self):
         super().__init__()
 
