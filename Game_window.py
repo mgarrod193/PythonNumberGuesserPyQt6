@@ -30,7 +30,8 @@ class GameWindow(QWidget):
         
         self.lbl_guess= QLabel(txt_guess)
         self.lbl_result=QLabel("")
-        self.line_guess = QSpinBox()
+        self.line_guess = QLineEdit()
+        self.line_guess.setValidator(QIntValidator())
         self.btn_guess = QPushButton(txt_btnguess)
 
         self.layout_line = QVBoxLayout()
