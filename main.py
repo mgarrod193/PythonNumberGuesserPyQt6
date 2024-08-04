@@ -2,7 +2,7 @@ from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout, QHBoxLayout
 
 from instr import *
-
+from Game_window import *
 
 
 class MainWindow(QMainWindow):
@@ -10,7 +10,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         
         #window which contains introduction
-        self.introduction()
+        self.initUI()
 
         #establishes connections between elements
         self.connects()
@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
         # start:
         self.show()
 
-    def introduction(self):
+    def initUI(self):
         #creates graphical elements
         self.btn_next = QPushButton(txt_next, self)
         self.lbl_greet = QLabel(txt_hello)
@@ -29,14 +29,15 @@ class MainWindow(QMainWindow):
 
         #creates layout and adds widgets to layout
         self.layout_line = QVBoxLayout()
-        self.layout_line.addWidget(self.lbl_greet, alignment=Qt.center)
-        self.layout_line.addWidget(self.lbl_instr, alignment=Qt.center)
-        self.layout_line.addWidget(self.btn_next, alignment=Qt.center)
+        self.layout_line.addWidget(self.lbl_greet, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.addWidget(self.lbl_instr, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.addWidget(self.btn_next, alignment=Qt.AlignmentFlag.AlignCenter)
         self.setLayout(self.layout_line)
 
     #called when play button is clicked
     def play_click(self):
-        pass
+        self.gameWindow = GameWindow()
+        self.hide()
 
     #links button to functions
     def connects(self):

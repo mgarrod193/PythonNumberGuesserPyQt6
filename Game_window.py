@@ -1,25 +1,66 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QDoubleValidator, QIntValidator, QFont # checking the types of input values
-from PyQt5.QtWidgets import (
-       QApplication, QWidget,
-       QHBoxLayout, QVBoxLayout, QGridLayout,
-       QGroupBox, QRadioButton,
-       QPushButton, QLabel, QListWidget, QLineEdit)
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QDoubleValidator, QIntValidator, QFont # checking the types of input values
+from PyQt6.QtWidgets import (QVBoxLayout, QPushButton, QLabel, QLineEdit)
 
 from random import randint
 from instr import *
 
+lives = 3
+
+class GameWindow():
+    def __init__(self):
+        super().__init__()
+
+        self.winningNumber = randint(0,10)
+
+        #window which contains introduction
+        self.initUI()
+
+        #establishes connections between elements
+        self.connects()
+
+        # sets what the window will look like (label, size, location)
+        self.set_appear()
+
+        # start:
+        self.show()
 
 
-while input("Do you want to play? (no to quit):").lower() != "no":
-    winning_number = randint(0, 10)
+    def initUI(self):
+        
+        self.lbl_guess= QLabel(txt_guess)
+        self.lbl_result=QLabel("")
+        self.line_guess = QLineEdit()
+        self.btn_guess = QPushButton(txt_btnguess)
 
-    player_number = int(input("Guess a number from 1 to 10:"))
-    while player_number != winning_number:
-        if player_number < winning_number:
-            print("try a larger number")
+        self.layout_line = QVBoxLayout()
+        self.layout_line.addWidget(self.lbl_guess, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.addWidget(self.line_guess, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.addWidget(self.lbl_result, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.addWidget(self.btn_guess, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.setLayout(self.layout_line)
+
+    def guess_click(self):
+        guessNumber = int(self.btn_guess.text())
+        if guessNumber == self.winningNumber:
+            self.lbl_result.setText("You Win!")
+        elif guessNumber > self.winningNumber:
+            self.lbl_result.setText("Lower")
+            lives -= 1
+            print(lives)
         else:
-            print("try a smaller number")
-        player_number = int(input("Guess a number from 1 to 10:")) 
-    
-    print("You Win!")
+            lives -= 1
+            print(lives)
+            self.lbl_result.setText('Higher')
+
+    def connects(self):
+        self.btn_guess.clicked.connect(self.guess_click)
+
+    def set_appear(self):
+        self.setWindowTitle(txt_title)
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)
+
+#When player is dead show lose screen
+if lives == 0:
+    pass
