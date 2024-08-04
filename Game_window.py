@@ -1,6 +1,15 @@
-from random import randint
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QDoubleValidator, QIntValidator, QFont # checking the types of input values
+from PyQt5.QtWidgets import (
+       QApplication, QWidget,
+       QHBoxLayout, QVBoxLayout, QGridLayout,
+       QGroupBox, QRadioButton,
+       QPushButton, QLabel, QListWidget, QLineEdit)
 
-print("Welcome to the number guesser game. \nGuess the correct number to win.\n")
+from random import randint
+from instr import *
+
+
 
 while input("Do you want to play? (no to quit):").lower() != "no":
     winning_number = randint(0, 10)
