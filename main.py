@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
 
 app = QApplication([])
@@ -8,8 +8,9 @@ class MainWindow(QMainWindow):
         super().__init__()
         
         self.setWindowTitle("Number Guesser")
+        self.setFixedSize(QSize(500,500))
 
-        button = QPushButton("Press Me!")
+        button = QPushButton("Click to play!")
 
         self.setCentralWidget(button)
 #creates and shows window
