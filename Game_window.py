@@ -1,6 +1,6 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QDoubleValidator, QIntValidator, QFont # checking the types of input values
-from PyQt6.QtWidgets import (QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QWidget)
+from PyQt6.QtWidgets import (QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QWidget, QSpinBox)
 
 from random import randint
 from instr import *
@@ -30,7 +30,7 @@ class GameWindow(QWidget):
         
         self.lbl_guess= QLabel(txt_guess)
         self.lbl_result=QLabel("")
-        self.line_guess = QLineEdit()
+        self.line_guess = QSpinBox()
         self.btn_guess = QPushButton(txt_btnguess)
 
         self.layout_line = QVBoxLayout()
@@ -41,7 +41,8 @@ class GameWindow(QWidget):
         self.setLayout(self.layout_line)
 
     def guess_click(self):
-        guessNumber = int(self.btn_guess.text())
+        print(self.btn_guess.text())
+        guessNumber = float(self.btn_guess.text())
         if guessNumber == self.winningNumber:
             self.lbl_result.setText("You Win!")
         elif guessNumber > self.winningNumber:
