@@ -1,21 +1,57 @@
 from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout, QHBoxLayout
 
-app = QApplication([])
+from instr import *
+
+
 
 class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         
-        self.setWindowTitle("Number Guesser")
-        self.setFixedSize(QSize(500,500))
+        #window which contains introduction
+        self.introduction()
 
-        button = QPushButton("Click to play!")
+        #establishes connections between elements
+        self.connects()
 
-        self.setCentralWidget(button)
+        # sets what the window will look like (label, size, location)
+        self.set_appear()
+
+        # start:
+        self.show()
+
+    def introduction(self):
+        #creates graphical elements
+        self.btn_next = QPushButton(txt_next, self)
+        self.lbl_greet = QLabel(txt_hello)
+        self.lbl_instr = QLabel(txt_instruction)
+
+        #creates layout and adds widgets to layout
+        self.layout_line = QVBoxLayout()
+        self.layout_line.addWidget(self.lbl_greet, alignment=Qt.center)
+        self.layout_line.addWidget(self.lbl_instr, alignment=Qt.center)
+        self.layout_line.addWidget(self.btn_next, alignment=Qt.center)
+        self.setLayout(self.layout_line)
+
+    #called when play button is clicked
+    def play_click(self):
+        pass
+
+    #links button to functions
+    def connects(self):
+        self.btn_next.clicked.connect(self.play_click)
+
+    #sets window's appearance
+    def set_appear(self):
+        self.setWindowTitle(txt_title)
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)
+
+app = QApplication([])
+
 #creates and shows window
-window = MainWindow()
-window.show()
+mainWindow = MainWindow()
 
 #runs loop
 app.exec()
