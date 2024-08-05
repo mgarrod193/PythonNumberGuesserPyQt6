@@ -1,9 +1,7 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QWidget, QSpinBox)
 
-from random import randint
 from instr import *
-
 from Game_window import *
 
 class ResultWindow(QWidget):
@@ -25,6 +23,7 @@ class ResultWindow(QWidget):
         # start:
         self.show()
 
+    #creates Labels and buttons, adds them to layout and sets layout
     def initUI(self):
         self.lbl_win_num = QLabel(str(self.winningNumber))
         self.lbl_result = QLabel(self.result)
@@ -42,17 +41,21 @@ class ResultWindow(QWidget):
         self.v_line.addLayout(self.h_line)
         self.setLayout(self.v_line)
 
+    # conntects buttons to functions
     def connects(self):
         self.btn_quit.clicked.connect(self.quit_click)
         self.btn_replay.clicked.connect(self.replay_click)
 
-    def quit_click(self):
-        gameWindow = GameWindow()
+    #replays the game
+    def replay_click(self):
+        self.gameWindow = GameWindow()
         self.hide()
 
-    def replay_click(self):
+    #closes the application
+    def quit_click(self):
         self.close()
 
+    #setups window appearance
     def set_appear(self):
         self.setWindowTitle(txt_title)
         self.resize(win_width, win_height)

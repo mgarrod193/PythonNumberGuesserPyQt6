@@ -26,7 +26,7 @@ class GameWindow(QWidget):
         # start:
         self.show()
 
-
+    #creates Labels and buttons, adds them to layout and sets layout
     def initUI(self):
         
         self.lbl_guess= QLabel(txt_guess)
@@ -42,8 +42,8 @@ class GameWindow(QWidget):
         self.layout_line.addWidget(self.btn_guess, alignment=Qt.AlignmentFlag.AlignCenter)
         self.setLayout(self.layout_line)
 
+    #called when guess button clicked, checks guessed number against the winning number and provides a hint to player
     def guess_click(self):
-        print(self.line_guess.text())
         guessNumber = float(self.line_guess.text())
         if guessNumber == self.winningNumber:
             self.ResultWindow = ResultWindow(self.winningNumber, "You Win!")
@@ -58,15 +58,17 @@ class GameWindow(QWidget):
             print(self.lives)
             self.lbl_result.setText('Higher')
 
-
+        #if player loses all 3 lives displays result window of "you lose!"
         if self.lives == 0:
             #display results screen
             self.ResultWindow = ResultWindow(self.winningNumber, "you Lose!")
             self.hide()
 
+    #connects buttons to functions
     def connects(self):
         self.btn_guess.clicked.connect(self.guess_click)
 
+    #setup window appearance
     def set_appear(self):
         self.setWindowTitle(txt_title)
         self.resize(win_width, win_height)
