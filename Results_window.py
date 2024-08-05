@@ -8,9 +8,10 @@ from instr import *
 
 
 class ResultWindow(QWidget):
-    def __init__(self, result):
+    def __init__(self, winningNumber, result):
         super().__init__()
 
+        self.winningNumber = winningNumber
         self.result = result
 
         #window which contains introduction
@@ -26,10 +27,26 @@ class ResultWindow(QWidget):
         self.show()
 
     def initUI(self):
-        pass
+        self.lbl_win_num = QLabel(str(self.winningNumber))
+        self.lbl_result = QLabel("")
+        self.btn_replay = QPushButton("Replay?")
+        self.btn_quit = QPushButton("Quit")
+
+        self.v_line = QVBoxLayout()
+        self.h_line = QHBoxLayout()
+
+        self.h_line.addWidget(self.btn_replay)
+        self.h_line.addWidget(self.btn_quit)
+
+        self.v_line.addWidget(self.lbl_win_num)
+        self.v_line.addWidget(self.lbl_result)
+        self.v_line.addWidget(self.h_line)
+        self.setLayout(self.v_line)
 
     def connects(self):
         pass
 
     def set_appear(self):
-        pass
+        self.setWindowTitle(txt_title)
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)

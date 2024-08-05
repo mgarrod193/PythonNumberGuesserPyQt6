@@ -5,13 +5,14 @@ from PyQt6.QtWidgets import (QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLin
 from random import randint
 from instr import *
 
-lives = 3
+from Results_window import *
 
 class GameWindow(QWidget):
     def __init__(self):
         super().__init__()
 
         self.winningNumber = randint(0,10)
+        self.lives = 3
 
         #window which contains introduction
         self.initUI()
@@ -45,16 +46,24 @@ class GameWindow(QWidget):
         print(self.line_guess.text())
         guessNumber = float(self.line_guess.text())
         if guessNumber == self.winningNumber:
+            self.ResultWindow = ResultWindow(self.winningNumber, True)
+            self.hide()
             self.lbl_result.setText("You Win!")
         elif guessNumber > self.winningNumber:
             self.lbl_result.setText("Lower")
-            lives -= 1
-            print(lives)
+            self.lives -= 1
+            print(self.lives)
         else:
-            lives -= 1
-            print(lives)
+            self.lives -= 1
+            print(self.lives)
             self.lbl_result.setText('Higher')
-            
+
+
+        if self.lives == 0:
+            #display results screen
+            self.ResultWindow = ResultWindow(self.winningNumber, True)
+            self.hide()
+
     def connects(self):
         self.btn_guess.clicked.connect(self.guess_click)
 
@@ -63,6 +72,4 @@ class GameWindow(QWidget):
         self.resize(win_width, win_height)
         self.move(win_x, win_y)
 
-#When player is dead show lose screen
-if lives == 0:
-    pass
+
