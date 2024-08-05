@@ -42,8 +42,8 @@ class GameWindow(QWidget):
         self.setLayout(self.layout_line)
 
     def guess_click(self):
-        print(self.btn_guess.text())
-        guessNumber = float(self.btn_guess.text())
+        print(self.line_guess.text())
+        guessNumber = float(self.line_guess.text())
         if guessNumber == self.winningNumber:
             self.lbl_result.setText("You Win!")
         elif guessNumber > self.winningNumber:
@@ -54,7 +54,7 @@ class GameWindow(QWidget):
             lives -= 1
             print(lives)
             self.lbl_result.setText('Higher')
-
+            
     def connects(self):
         self.btn_guess.clicked.connect(self.guess_click)
 
