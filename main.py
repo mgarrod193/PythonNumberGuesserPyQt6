@@ -55,4 +55,5 @@ app = QApplication([])
 mainWindow = MainWindow()
 
 #runs loop
-app.exec()
+if __name__ == "__main__":
+    app.exec()
