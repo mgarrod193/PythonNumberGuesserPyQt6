@@ -46,7 +46,7 @@ class GameWindow(QWidget):
     def guess_click(self):
         guessNumber = float(self.line_guess.text())
         if guessNumber == self.winningNumber:
-            self.ResultWindow = ResultWindow(self.winningNumber, "You Win!")
+            self.ResultWindow = ResultWindow(self.winningNumber, "You Win!", self)
             self.hide()
             self.lbl_result.setText("You Win!")
         elif guessNumber > self.winningNumber:
@@ -61,7 +61,7 @@ class GameWindow(QWidget):
         #if player loses all 3 lives displays result window of "you lose!"
         if self.lives == 0:
             #display results screen
-            self.ResultWindow = ResultWindow(self.winningNumber, "you Lose!")
+            self.ResultWindow = ResultWindow(self.winningNumber, "you Lose!", self)
             self.hide()
 
     #connects buttons to functions
@@ -75,3 +75,6 @@ class GameWindow(QWidget):
         self.move(win_x, win_y)
 
 
+    def replay(self):
+        self.lives = 3
+        self.show()

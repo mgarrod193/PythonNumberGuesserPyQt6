@@ -38,7 +38,7 @@ class MainWindow(QWidget):
     #called when play button is clicked
     def play_click(self):
         self.gameWindow = GameWindow()
-        self.hide()
+        self.close()
 
     #links button to functions
     def connects(self):
@@ -54,6 +54,7 @@ app = QApplication([])
 
 #creates and shows window
 mainWindow = MainWindow()
+
 
 #runs loop
 if __name__ == "__main__":

@@ -5,11 +5,12 @@ from instr import *
 from main import *
 
 class ResultWindow(QWidget):
-    def __init__(self, winningNumber, result):
+    def __init__(self, winningNumber, result, gameWindow):
         super().__init__()
 
         self.winningNumber = winningNumber
         self.result = result
+        self.gameWindow = gameWindow
 
         #window which contains introduction
         self.initUI()
@@ -48,6 +49,7 @@ class ResultWindow(QWidget):
 
     #replays the game
     def replay_click(self):
+        self.gameWindow.replay()
         self.hide()
 
     #closes the application
