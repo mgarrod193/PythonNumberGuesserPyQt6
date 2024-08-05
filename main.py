@@ -26,12 +26,13 @@ class MainWindow(QWidget):
         self.btn_next = QPushButton(txt_next, self)
         self.lbl_greet = QLabel(txt_hello)
         self.lbl_instr = QLabel(txt_instruction)
+        self.lbl_instr.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 
         #creates layout and adds widgets to layout
         self.layout_line = QVBoxLayout()
-        self.layout_line.addWidget(self.lbl_greet, alignment=Qt.AlignmentFlag.AlignCenter)
-        self.layout_line.addWidget(self.lbl_instr, alignment=Qt.AlignmentFlag.AlignCenter)
-        self.layout_line.addWidget(self.btn_next, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.addWidget(self.lbl_greet, alignment=Qt.AlignmentFlag.AlignHCenter)
+        self.layout_line.addWidget(self.lbl_instr, alignment=Qt.AlignmentFlag.AlignHCenter)
+        self.layout_line.addWidget(self.btn_next, alignment=Qt.AlignmentFlag.AlignHCenter)
         self.setLayout(self.layout_line)
 
     #called when play button is clicked
