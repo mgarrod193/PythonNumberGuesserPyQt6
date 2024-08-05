@@ -46,7 +46,7 @@ class GameWindow(QWidget):
         print(self.line_guess.text())
         guessNumber = float(self.line_guess.text())
         if guessNumber == self.winningNumber:
-            self.ResultWindow = ResultWindow(self.winningNumber, True)
+            self.ResultWindow = ResultWindow(self.winningNumber, "You Win!")
             self.hide()
             self.lbl_result.setText("You Win!")
         elif guessNumber > self.winningNumber:
@@ -61,7 +61,7 @@ class GameWindow(QWidget):
 
         if self.lives == 0:
             #display results screen
-            self.ResultWindow = ResultWindow(self.winningNumber, True)
+            self.ResultWindow = ResultWindow(self.winningNumber, "you Lose!")
             self.hide()
 
     def connects(self):
