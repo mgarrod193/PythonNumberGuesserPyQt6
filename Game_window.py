@@ -76,5 +76,7 @@ class GameWindow(QWidget):
 
 
     def replay(self):
+        self.winningNumber = randint(0, 10)
         self.lives = 3
+        self.lbl_result.setText("")
         self.show()

@@ -6,7 +6,7 @@ from Game_window import *
 
 
 class MainWindow(QWidget):
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__()
         
         #window which contains introduction
