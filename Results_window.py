@@ -2,7 +2,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QWidget, QSpinBox)
 
 from instr import *
-from Game_window import *
+from main import *
 
 class ResultWindow(QWidget):
     def __init__(self, winningNumber, result):
@@ -48,12 +48,11 @@ class ResultWindow(QWidget):
 
     #replays the game
     def replay_click(self):
-        self.gameWindow = GameWindow()
         self.hide()
 
     #closes the application
     def quit_click(self):
-        self.close()
+        app.exit()
 
     #setups window appearance
     def set_appear(self):
