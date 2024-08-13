@@ -37,10 +37,13 @@ class GameWindow(QWidget):
         self.btn_guess = QPushButton(txt_btnguess)
 
         self.layout_line = QVBoxLayout()
+        self.layout_line.setContentsMargins(0,0,0,0)
+        self.layout_line.setSpacing(50)
         self.layout_line.addWidget(self.lbl_guess, alignment=Qt.AlignmentFlag.AlignCenter)
         self.layout_line.addWidget(self.line_guess, alignment=Qt.AlignmentFlag.AlignCenter)
         self.layout_line.addWidget(self.lbl_result, alignment=Qt.AlignmentFlag.AlignCenter)
         self.layout_line.addWidget(self.btn_guess, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setLayout(self.layout_line)
 
     #called when guess button clicked, checks guessed number against the winning number and provides a hint to player
@@ -73,7 +76,6 @@ class GameWindow(QWidget):
     def set_appear(self):
         self.setWindowTitle(txt_title)
         self.resize(win_width, win_height)
-        self.move(win_x, win_y)
 
 
     def replay(self):

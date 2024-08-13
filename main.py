@@ -1,4 +1,4 @@
-from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout, QHBoxLayout
 
 from instr import *
@@ -26,13 +26,16 @@ class MainWindow(QWidget):
         self.btn_next = QPushButton(txt_next, self)
         self.lbl_greet = QLabel(txt_hello)
         self.lbl_instr = QLabel(txt_instruction)
-        self.lbl_instr.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.lbl_instr.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         #creates layout and adds widgets to layout
-        self.layout_line = QVBoxLayout()
-        self.layout_line.addWidget(self.lbl_greet, alignment=Qt.AlignmentFlag.AlignHCenter)
-        self.layout_line.addWidget(self.lbl_instr, alignment=Qt.AlignmentFlag.AlignHCenter)
-        self.layout_line.addWidget(self.btn_next, alignment=Qt.AlignmentFlag.AlignHCenter)
+        self.layout_line = QVBoxLayout()    
+        self.layout_line.setContentsMargins(0,0,0,0)
+        self.layout_line.setSpacing(50)
+        self.layout_line.addWidget(self.lbl_greet, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.addWidget(self.lbl_instr, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.addWidget(self.btn_next, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setLayout(self.layout_line)
 
     #called when play button is clicked
@@ -48,7 +51,7 @@ class MainWindow(QWidget):
     def set_appear(self):
         self.setWindowTitle(txt_title)
         self.resize(win_width, win_height)
-        self.move(win_x, win_y)
+
 
 app = QApplication([])
 

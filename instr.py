@@ -1,5 +1,4 @@
-win_x, win_y = 200, 100
-win_width, win_height = 1000, 600
+win_width, win_height = 600, 500
 
 txt_hello = 'Welcome to the number guessing game'
 txt_instruction = ("Guess the number from 0 to 10, you will have 3 guesses.\n"
