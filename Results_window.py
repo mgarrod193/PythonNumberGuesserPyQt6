@@ -26,21 +26,33 @@ class ResultWindow(QWidget):
 
     #creates Labels and buttons, adds them to layout and sets layout
     def initUI(self):
+        self.lbl_win_num_title =  QLabel("Winning Number:")
         self.lbl_win_num = QLabel(str(self.winningNumber))
         self.lbl_result = QLabel(self.result)
         self.btn_replay = QPushButton("Replay?")
         self.btn_quit = QPushButton("Quit")
 
-        self.v_line = QVBoxLayout()
-        self.h_line = QHBoxLayout()
+        self.layout_line = QVBoxLayout()
+        self.layout_line.setContentsMargins(0,0,0,0)
+        self.layout_line.setSpacing(50)
+        self.win_h_line = QHBoxLayout()
+        self.win_h_line.setContentsMargins(0,0,0,0)
+        self.win_h_line.setSpacing(10)
+        self.win_h_line.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.btn_h_line = QHBoxLayout()
 
-        self.h_line.addWidget(self.btn_replay)
-        self.h_line.addWidget(self.btn_quit)
 
-        self.v_line.addWidget(self.lbl_win_num, alignment= Qt.AlignmentFlag.AlignCenter)
-        self.v_line.addWidget(self.lbl_result, alignment= Qt.AlignmentFlag.AlignCenter)
-        self.v_line.addLayout(self.h_line)
-        self.setLayout(self.v_line)
+        self.win_h_line.addWidget(self.lbl_win_num_title, alignment= Qt.AlignmentFlag.AlignCenter)
+        self.win_h_line.addWidget(self.lbl_win_num, alignment= Qt.AlignmentFlag.AlignLeft)
+
+        self.btn_h_line.addWidget(self.btn_replay)
+        self.btn_h_line.addWidget(self.btn_quit)
+
+        self.layout_line.addLayout(self.win_h_line)
+        self.layout_line.addWidget(self.lbl_result, alignment= Qt.AlignmentFlag.AlignCenter)
+        self.layout_line.addLayout(self.btn_h_line)
+        self.layout_line.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.setLayout(self.layout_line)
 
     # conntects buttons to functions
     def connects(self):
