@@ -49,9 +49,9 @@ class ResultWindow(QWidget):
 
     #replays the game
     def replay_click(self):
-        self.gameWindow.replay()
-        self.hide()
-
+    #    self.gameWindow.replay()
+    #   self.hide()
+        pass
     #closes the application
     def quit_click(self):
         app.exit()
