@@ -1,6 +1,6 @@
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QDoubleValidator, QIntValidator, QFont # checking the types of input values
-from PyQt6.QtWidgets import (QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QWidget, QSpinBox)
+from PyQt6.QtGui import QPalette, QIntValidator, QPixmap
+from PyQt6.QtWidgets import (QVBoxLayout, QPushButton, QLabel, QLineEdit, QWidget, QSpinBox)
 
 from random import randint
 from instr import *
@@ -36,7 +36,7 @@ class GameWindow(QWidget):
         palette.setBrush(QPalette.ColorRole.Window, QBrush(background_image))
         self.setPalette(palette)
         
-        
+        self.lbl_lives = QLabel("Lives: 3", alignment= Qt.AlignmentFlag.AlignTop)
         self.lbl_guess= QLabel(txt_guess)
         self.lbl_result=QLabel("")
         self.line_guess = QLineEdit()
@@ -47,6 +47,7 @@ class GameWindow(QWidget):
         self.layout_line = QVBoxLayout()
         self.layout_line.setContentsMargins(0,0,0,0)
         self.layout_line.setSpacing(50)
+        self.layout_line.addWidget(self.lbl_lives, alignment= Qt.AlignmentFlag.AlignTop)
         self.layout_line.addWidget(self.lbl_guess, alignment=Qt.AlignmentFlag.AlignCenter)
         self.layout_line.addWidget(self.line_guess, alignment=Qt.AlignmentFlag.AlignCenter)
         self.layout_line.addWidget(self.lbl_result, alignment=Qt.AlignmentFlag.AlignCenter)
@@ -72,6 +73,8 @@ class GameWindow(QWidget):
             self.lbl_result.setText('Higher')
         self.lives -= 1    
 
+        lives_string = "Lives: " + str(self.lives)
+        self.lbl_lives.setText(lives_string)
         #if player loses all 3 lives displays result window of "you lose!"
         if self.lives == 0:
             #display results screen
