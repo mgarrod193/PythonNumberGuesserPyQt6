@@ -56,6 +56,11 @@ class GameWindow(QWidget):
 
     #called when guess button clicked, checks guessed number against the winning number and provides a hint to player
     def guess_click(self):
+        try:
+            float(self.line_guess.text())
+        except:
+            self.lbl_result.setText("Error: No number inputted.")
+            return
         guessNumber = float(self.line_guess.text())
         if guessNumber == self.winningNumber:
             self.ResultWindow = ResultWindow(self.winningNumber, "You Win!", self)
