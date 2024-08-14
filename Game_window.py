@@ -68,12 +68,9 @@ class GameWindow(QWidget):
             self.lbl_result.setText("You Win!")
         elif guessNumber > self.winningNumber:
             self.lbl_result.setText("Lower")
-            self.lives -= 1
-            print(self.lives)
         else:
-            self.lives -= 1
-            print(self.lives)
             self.lbl_result.setText('Higher')
+        self.lives -= 1    
 
         #if player loses all 3 lives displays result window of "you lose!"
         if self.lives == 0:
