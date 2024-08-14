@@ -26,6 +26,15 @@ class ResultWindow(QWidget):
 
     #creates Labels and buttons, adds them to layout and sets layout
     def initUI(self):
+        # Load the background image
+        background_image = QPixmap('test.png')  # Path to your image file
+
+        # Set the palette
+        palette = QPalette()
+        palette.setBrush(QPalette.ColorRole.Window, QBrush(background_image))
+        self.setPalette(palette)
+        
+
         self.lbl_win_num_title =  QLabel("Winning Number:")
         self.lbl_win_num = QLabel(str(self.winningNumber))
         self.lbl_result = QLabel(self.result)

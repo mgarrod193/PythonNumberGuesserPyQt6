@@ -1,4 +1,5 @@
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtGui import QPixmap, QPalette, QBrush
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout, QHBoxLayout
 
 from instr import *
@@ -22,6 +23,15 @@ class MainWindow(QWidget):
         self.show()
 
     def initUI(self):
+        
+        # Load the background image
+        background_image = QPixmap('test.png')  # Path to your image file
+
+        # Set the palette
+        palette = QPalette()
+        palette.setBrush(QPalette.ColorRole.Window, QBrush(background_image))
+        self.setPalette(palette)
+
         #creates graphical elements
         self.btn_next = QPushButton(txt_next, self)
         self.lbl_greet = QLabel(txt_hello)
